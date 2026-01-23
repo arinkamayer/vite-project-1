@@ -3,7 +3,6 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 
 const currentDate = ref(new Date())
 
-// Форматированная дата
 const formattedDate = computed(() => {
   return currentDate.value.toLocaleDateString('ru-RU', {
     day: 'numeric',
@@ -13,17 +12,15 @@ const formattedDate = computed(() => {
   })
 })
 
-// Форматированное время
 const formattedTime = computed(() => {
   return currentDate.value.toLocaleTimeString('ru-RU')
 })
 
-// Обновляем время каждую секунду
 let intervalId = null
 
 onMounted(() => {
   intervalId = setInterval(() => {
-    currentDate.value = new Date() // Изменяем ref - это триггерит обновление computed
+    currentDate.value = new Date() 
   }, 1000)
 })
 
@@ -46,7 +43,6 @@ onUnmounted(() => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* height: 100vh; */
   text-align: center;
 }
 .header {
